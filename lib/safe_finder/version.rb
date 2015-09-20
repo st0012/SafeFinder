@@ -1,0 +1,3 @@
+module SafeFinder
+  VERSION = "0.1.0"
+end
