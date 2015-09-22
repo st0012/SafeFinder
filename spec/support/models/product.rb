@@ -4,7 +4,7 @@ ActiveRecord::Base.default_timezone = "Taipei"
 ActiveRecord::Base.time_zone_aware_attributes = true
 
 # migrations
-ActiveRecord::Base.establish_connection adapter: "sqlite3", database: "tmp/:safe_finder:"
+ActiveRecord::Base.establish_connection adapter: "sqlite3", database: "tmp/safe_finder"
 
 ActiveRecord::Base.raise_in_transactional_callbacks = true if ActiveRecord::Base.respond_to?(:raise_in_transactional_callbacks=)
 
@@ -13,9 +13,8 @@ unless ActiveRecord::Base.connection.table_exists?("posts") ||
   ActiveRecord::Migration.create_table :posts do |t|
     t.string :title
     t.integer :user_id
-    t.boolean :is_published
-    t.integer :view_count
-    t.text :description
+    t.boolean :is_published, default: false
+    t.integer :view_count, default:0
     t.text :content
     t.timestamps null: true
   end
