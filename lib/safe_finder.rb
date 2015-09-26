@@ -17,7 +17,7 @@ module SafeFinder
 
   module ClassMethods
     def null_object
-      SafeFinder::NullObjectGenerator.new(self).generate
+      @null_object ||= SafeFinder::NullObjectGenerator.new(self).generate
     end
 
     def safe_attribute(key, value)
