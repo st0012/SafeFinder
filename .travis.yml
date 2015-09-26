@@ -1,4 +1,15 @@
 language: ruby
+sudo: false
+cache: bundler
 rvm:
-  - 2.2.0
-before_install: gem install bundler -v 1.10.6
+  - 2.0
+  - 2.1
+  - 2.2
+  - ruby-head
+
+notifications:
+  email:
+    recipients:
+      - stan001212@gmail.com
+    on_failure: change
+    on_success: never
