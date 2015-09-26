@@ -6,7 +6,7 @@ describe SafeFinder::NullObjectGenerator do
 
   before do
     Post.class_eval do
-      extend SafeFinder
+      include SafeFinder
 
       safe_attribute :title, "It's null"
       safe_attribute :is_published, false
