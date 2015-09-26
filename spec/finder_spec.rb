@@ -19,6 +19,10 @@ describe SafeFinder::FinderMethods do
         result = User.safely.find(user.id + 1)
         expect(result.class).to eq(NullUser)
       end
+
+      it "raises exception if not using safely scope" do
+        expect{ User.find(user.id + 1) }.to raise_error(ActiveRecord::RecordNotFound)
+      end
     end
   end
 end
