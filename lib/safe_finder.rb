@@ -3,7 +3,7 @@ require "safe_finder/null_object"
 require "safe_finder/version"
 
 module SafeFinder
-  def set_safe_attribute(key, value)
+  def safe_attribute(key, value)
     @null_object_attributes = {} if @null_object_attributes.nil?
     @null_object_attributes[key.to_sym] = value
   end

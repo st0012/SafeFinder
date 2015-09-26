@@ -8,9 +8,9 @@ describe SafeFinder::NullObjectGenerator do
     Post.class_eval do
       extend SafeFinder
 
-      set_safe_attribute :title, "It's null"
-      set_safe_attribute :is_published, false
-      set_safe_attribute :view_count, 0
+      safe_attribute :title, "It's null"
+      safe_attribute :is_published, false
+      safe_attribute :view_count, 0
     end
   end
 
