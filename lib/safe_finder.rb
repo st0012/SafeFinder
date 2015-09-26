@@ -8,7 +8,16 @@ module SafeFinder
     @null_object_attributes[key.to_sym] = value
   end
 
+  def safe_method(method_name, &block)
+    @null_object_methods = {} if @null_object_methods.nil?
+    @null_object_methods[method_name.to_sym] = block
+  end
+
   def null_object_attributes
     @null_object_attributes
+  end
+
+  def null_object_methods
+    @null_object_methods
   end
 end

@@ -11,6 +11,9 @@ describe SafeFinder::NullObjectGenerator do
       safe_attribute :title, "It's null"
       safe_attribute :is_published, false
       safe_attribute :view_count, 0
+      safe_method :hello do
+        "Hello"
+      end
     end
   end
 
@@ -36,10 +39,11 @@ describe SafeFinder::NullObjectGenerator do
       expect(null_object.view_count).to eq(0)
       expect(null_object.content).to be_nil
     end
-  end
 
-  describe "#set_columns" do
-    it "sets column attribute with configured value" do
+    it "generates null object with right methods" do
+      null_object = subject.generate
+
+      expect(null_object.hello).to eq("Hello")
     end
   end
 end

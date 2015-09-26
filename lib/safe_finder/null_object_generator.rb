@@ -10,9 +10,12 @@ module SafeFinder
     end
 
     def generate
-      set_columns
+      set_attributes
+      set_methods
       null_class.new
     end
+
+    private
 
     def create_null_class
       Object.const_set("Null#{original_class_name}", Class.new(NullObject))
@@ -35,7 +38,16 @@ module SafeFinder
       end
     end
 
-    def set_columns
+    def set_methods
+      methods = original_class.null_object_methods
+      null_class.class_eval do
+        methods.each do |key, value|
+          define_method key, value
+        end
+      end
+    end
+
+    def set_attributes
       attributes = get_attributes
       null_class.class_eval do
         attributes.each do |key, value|
