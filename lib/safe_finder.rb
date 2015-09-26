@@ -1,5 +1,6 @@
 require "safe_finder/null_object_generator"
 require "safe_finder/null_object"
+require "safe_finder/finder"
 require "safe_finder/version"
 
 module SafeFinder
