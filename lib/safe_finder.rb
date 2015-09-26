@@ -1,6 +1,6 @@
 require "safe_finder/null_object_generator"
 require "safe_finder/null_object"
-require "safe_finder/finder"
+require "safe_finder/finder_methods"
 require "safe_finder/version"
 
 module SafeFinder
@@ -17,6 +17,8 @@ module SafeFinder
   end
 
   module ClassMethods
+    include SafeFinder::FinderMethods
+
     def null_object
       @null_object ||= SafeFinder::NullObjectGenerator.new(self).generate
     end

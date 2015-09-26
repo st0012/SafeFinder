@@ -1,5 +1,5 @@
 module SafeFinder
-  module Finder
+  module FinderMethods
 
   end
 end
