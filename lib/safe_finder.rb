@@ -6,25 +6,26 @@ module SafeFinder
 
   def self.included(base)
     base.extend(ClassMethods)
+    base.singleton_class.class_eval do
+      attr_accessor :null_object_attributes, :null_object_methods
+    end
+    base.class_eval do
+      self.null_object_attributes = {}
+      self.null_object_methods = {}
+    end
   end
 
   module ClassMethods
+    def null_object
+      SafeFinder::NullObjectGenerator.new(self).generate
+    end
+
     def safe_attribute(key, value)
-      @null_object_attributes = {} if @null_object_attributes.nil?
-      @null_object_attributes[key.to_sym] = value
+      null_object_attributes[key.to_sym] = value
     end
 
     def safe_method(method_name, &block)
-      @null_object_methods = {} if @null_object_methods.nil?
-      @null_object_methods[method_name.to_sym] = block
-    end
-
-    def null_object_attributes
-      @null_object_attributes
-    end
-
-    def null_object_methods
-      @null_object_methods
+      null_object_methods[method_name.to_sym] = block
     end
   end
 end
