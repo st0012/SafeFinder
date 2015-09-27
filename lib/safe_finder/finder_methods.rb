@@ -16,6 +16,15 @@ module SafeFinder
         raise e
       end
     end
+
+    def method_missing(name, *arguments, &block)
+      result = wrapped_class.send(name, *arguments, &block)
+      if result.nil? && safely
+        wrapped_class.null_object
+      else
+        result
+      end
+    end
   end
 
   module FinderMethods

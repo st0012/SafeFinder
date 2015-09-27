@@ -24,5 +24,20 @@ describe SafeFinder::FinderMethods do
         expect{ User.find(user.id + 1) }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
+
+    describe ".find_by_COLUMN" do
+      it "returns result if found" do
+        expect(User.safely.find_by_email(user.email)).to eq(user)
+      end
+
+      it "returns null_object if not found" do
+        null_object = User.safely.find_by_email(user.email << "123")
+        expect(null_object.class).to eq(NullUser)
+      end
+
+      it "returns nil if not found and without safely scope" do
+        expect(User.find_by_email(user.email < "123")).to be_nil
+      end
+    end
   end
 end
