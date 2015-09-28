@@ -3,7 +3,7 @@
 [![Test Coverage](https://codeclimate.com/github/st0012/SafeFinder/badges/coverage.svg)](https://codeclimate.com/github/st0012/SafeFinder/coverage)
 # SafeFinder
 
-SafeFinder let you define model's null_object through simple DSL, and returns it when you can't find a result.
+SafeFinder lets you define model's `Null Object` through simple DSL, and returns it when you can't find a result.
 
 ## Installation
 
@@ -34,10 +34,10 @@ class Post < ActiveRecord::Base
 end
 ```
 
-Now you can query like this, but it doesn't find anything:
+Now you can query like this, and if it doesn't find anything it returns a `Null Object`:
 
 ```ruby
-# It returns a null_object
+# It returns a Null Object
 null_object = Post.safely.find_by_title("Not Exists")
 
 null_object.class   # NullPost
@@ -47,7 +47,7 @@ null_object.content # nil
 
 ### Custom Attribute & Method
 
-And you can custom null_object's attribute or method using DSL:
+And you can custom Null Object's attribute or method using DSL:
 
 ```ruby
 class Post < ActiveRecord::Base
@@ -66,7 +66,7 @@ null_object.title => "Null"
 null_object.some_method => "Do Something"
 ```
 
-### Get NullObject directly
+### Get Null Object directly
 
 Just simply use:
 ```ruby
@@ -75,13 +75,13 @@ Post.null_object => #<NullPost:0x007fa8a4713be0>
 
 ### Inheritance
 
-All null_object inherits `SafeFinder::NullObject`, so you can add it in
+All `Null Object`s inherits `SafeFinder::NullObject`, so you can add it in
 
 ```
 app/models/safe_finder/null_object.rb
 ```
 
-to define general methods for every null_object
+to define general methods for every `Null Object`n
 
 ```ruby
 module SafeFinder
@@ -101,7 +101,7 @@ null_object.hello => "Hello"
 
 ## TODOs
 
-- Add association support, like `user.post` should also returns null_object when it's nil
+- Add association support, like `user.post` should also returns `Null Object` when it's nil
 - Add generator for `NullObject` model
 - More use cases in readme
 
