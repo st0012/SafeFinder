@@ -6,12 +6,12 @@ require 'safe_finder/version'
 Gem::Specification.new do |spec|
   spec.name          = "safe_finder"
   spec.version       = SafeFinder::VERSION
-  spec.authors       = ["Stan Low"]
-  spec.email         = ["a22301613@yahoo.com.tw"]
+  spec.authors       = ["Stan Loe"]
+  spec.email         = ["stan001212@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{SafeFinder lets you define model's null_object through simple DSL, and returns it when you can't find a result.}
+  spec.description   = %q{SafeFinder lets you define model's null_object through simple DSL, and returns it when you can't find a result.}
+  spec.homepage      = "https://github.com/st0012/SafeFinder"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
   # delete this section to allow pushing this gem to any host.
