@@ -1,10 +1,9 @@
 require "safe_finder/null_object_generator"
 require "safe_finder/null_object"
-require "safe_finder/finder_methods"
+require "safe_finder/class_wrapper"
 require "safe_finder/version"
 
 module SafeFinder
-
   def self.included(base)
     base.extend(ClassMethods)
     base.singleton_class.class_eval do
@@ -17,7 +16,9 @@ module SafeFinder
   end
 
   module ClassMethods
-    include SafeFinder::FinderMethods
+    def safely
+      ClassWrapper.new(self)
+    end
 
     def null_object
       @null_object ||= SafeFinder::NullObjectGenerator.new(self).generate

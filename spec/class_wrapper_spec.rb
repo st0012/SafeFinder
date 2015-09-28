@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe SafeFinder::FinderMethods do
+describe SafeFinder::ClassWrapper do
   before do
     User.class_eval do
       include SafeFinder
