@@ -62,15 +62,15 @@ end
 
 ```ruby
 null_object = Post.safely.find_by_title("Not Exists")
-null_object.title => "Null"
-null_object.some_method => "Do Something"
+null_object.title # "Null"
+null_object.some_method # "Do Something"
 ```
 
 ### Get Null Object directly
 
 Just simply use:
 ```ruby
-Post.null_object => #<NullPost:0x007fa8a4713be0>
+Post.null_object # <NullPost:0x007fa8a4713be0>
 ```
 
 ### Inheritance
@@ -95,7 +95,7 @@ end
 
 ```ruby
 null_object = Post.null_object
-null_object.hello => "Hello"
+null_object.hello # "Hello"
 ```
 
 
