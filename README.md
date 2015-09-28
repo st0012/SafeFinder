@@ -23,6 +23,7 @@ Or install it yourself as:
 
 ## Usage
 
+### Basic
 Let's say you have a `Post` class, and it has `title` and `content` column.
 
 First, you need to include `SafeFinder` in your model:
@@ -44,6 +45,8 @@ null_object.title   # nil
 null_object.content # nil
 ```
 
+### Custom Attribute & Method
+
 And you can custom null_object's attribute or method using DSL:
 
 ```ruby
@@ -57,6 +60,39 @@ class Post < ActiveRecord::Base
 end
 ```
 
+### Get NullObject directly
+
+Just simply use:
+```ruby
+Post.null_object => #<NullPost:0x007fa8a4713be0>
+```
+
+### Inheritance
+
+All null_object inherits `SafeFinder::NullObject`, so you can add it in
+
+```
+app/models/safe_finder/null_object.rb
+```
+
+to define general methods for every null_object
+
+```ruby
+module SafeFinder
+  class NullObject
+    def hello
+      "Hello"
+    end
+  end
+end
+```
+
+
+## TODOs
+
+- Add association support, like `user.post` should also returns null_object when it's nil
+- Add generator for `NullObject` model
+- More use cases in readme
 
 ## Development
 
