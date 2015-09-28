@@ -38,7 +38,7 @@ Now you can query like this, but it doesn't find anything:
 
 ```ruby
 # It returns a null_object
-null_object = Post.safely.find_by_title("New Post")
+null_object = Post.safely.find_by_title("Not Exists")
 
 null_object.class   # NullPost
 null_object.title   # nil
@@ -58,6 +58,12 @@ class Post < ActiveRecord::Base
     "Do Something"
   end
 end
+```
+
+```ruby
+null_object = Post.safely.find_by_title("Not Exists")
+null_object.title => "Null"
+null_object.some_method => "Do Something"
 ```
 
 ### Get NullObject directly
@@ -85,6 +91,11 @@ module SafeFinder
     end
   end
 end
+```
+
+```ruby
+null_object = Post.null_object
+null_object.hello => "Hello"
 ```
 
 
