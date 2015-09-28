@@ -3,9 +3,7 @@
 [![Test Coverage](https://codeclimate.com/github/st0012/SafeFinder/badges/coverage.svg)](https://codeclimate.com/github/st0012/SafeFinder/coverage)
 # SafeFinder
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/safe_finder`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+SafeFinder let you define model's null_object through simple DSL, and returns it when you can't find a result.
 
 ## Installation
 
@@ -25,7 +23,40 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Let's say you have a `Post` class, and it has `title` and `content` column.
+
+First, you need to include `SafeFinder` in your model:
+
+```ruby
+class Post < ActiveRecord::Base
+  include SafeFinder
+end
+```
+
+Now you can query like this, but it doesn't find anything:
+
+```ruby
+# It returns a null_object
+null_object = Post.safely.find_by_title("New Post")
+
+null_object.class   # NullPost
+null_object.title   # nil
+null_object.content # nil
+```
+
+And you can custom null_object's attribute or method using DSL:
+
+```ruby
+class Post < ActiveRecord::Base
+  include SafeFinder
+  
+  safe_attribute :title, "Null"
+  safe_method :some_method do
+    "Do Something"
+  end
+end
+```
+
 
 ## Development
 
