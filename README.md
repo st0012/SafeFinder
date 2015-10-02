@@ -3,11 +3,11 @@
 [![Test Coverage](https://codeclimate.com/github/st0012/SafeFinder/badges/coverage.svg)](https://codeclimate.com/github/st0012/SafeFinder/coverage)
 # SafeFinder
 
-SafeFinder lets you define model's `Null Object` through simple DSL, and returns it when you can't find a result.
+SafeFinder lets you define a model's `Null Object` through a simple DSL, and returns that when you don't find an instance of that model.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this line to your application's `Gemfile`:
 
 ```ruby
 gem 'safe_finder'
@@ -45,9 +45,9 @@ null_object.title   # nil
 null_object.content # nil
 ```
 
-### Custom Attribute & Method
+### Custom Attributes and Methods
 
-And you can custom Null Object's attribute or method using DSL:
+And you can customize the Null Object's attributes or methods using a DSL:
 
 ```ruby
 class Post < ActiveRecord::Base
@@ -66,7 +66,7 @@ null_object.title # "Null"
 null_object.some_method # "Do Something"
 ```
 
-### Get Null Object directly
+### Get a Null Object directly
 
 Just simply use:
 ```ruby
@@ -75,7 +75,7 @@ Post.null_object # <NullPost:0x007fa8a4713be0>
 
 ### Inheritance
 
-All `Null Object`s inherits `SafeFinder::NullObject`, so you can add it in
+All `Null Object`s inherit `SafeFinder::NullObject`, so you can add it in
 
 ```
 app/models/safe_finder/null_object.rb
