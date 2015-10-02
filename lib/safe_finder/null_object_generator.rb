@@ -33,8 +33,6 @@ module SafeFinder
     def get_value(column)
       if value = setted_columns[column.name.to_sym]
         value
-      else
-        nil
       end
     end
 
