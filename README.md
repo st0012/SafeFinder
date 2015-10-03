@@ -81,7 +81,13 @@ All `Null Object`s inherit `SafeFinder::NullObject`, so you can add it in
 app/models/safe_finder/null_object.rb
 ```
 
-to define general methods for every `Null Object`n
+by generate it with
+
+```
+rails g safe_finder:model
+```
+
+and define general methods for every `Null Object`
 
 ```ruby
 module SafeFinder
