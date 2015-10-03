@@ -14,7 +14,13 @@ describe SafeFinder::ModelGenerator, type: :generator do
           directory "models" do
             directory "safe_finder" do
               file "null_object.rb" do
+                contains <<"EOF"
+module SafeFinder
+  class NullObject
 
+  end
+end
+EOF
               end
             end
           end
