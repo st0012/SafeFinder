@@ -2,6 +2,7 @@ $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start
 require "safe_finder"
+require "generator_spec"
 require "pry"
 require "support/models"
 require "rspec"

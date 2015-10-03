@@ -1,3 +1,4 @@
+require "safe_finder/generators/model_generator"
 require "safe_finder/null_object_generator"
 require "safe_finder/null_object"
 require "safe_finder/class_wrapper"
