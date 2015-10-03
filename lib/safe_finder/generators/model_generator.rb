@@ -7,8 +7,7 @@ module SafeFinder
     end
 
     def create_model
-      template "models/null_object.rb"
-      File.join("app/models", "safe_finder", "null_object.rb")
+      template "models/null_object.rb", File.join("app/models", "safe_finder", "null_object.rb")
     end
   end
 end
