@@ -108,7 +108,6 @@ null_object.hello # "Hello"
 ## TODOs
 
 - Add association support, like `user.post` should also returns `Null Object` when it's nil
-- Add generator for `NullObject` model
 - More use cases in readme
 
 ## Development
